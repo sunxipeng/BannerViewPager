@@ -14,24 +14,37 @@ import java.util.ArrayList;
 public class HomeBannerAdapter extends PagerAdapter {
     private ArrayList<ImageView> mViews;
     private Context mContext;
-    private ImageView iv;
+
 
     public HomeBannerAdapter(Context context) {
         this.mContext = context;
 
-//        mViews = new ArrayList<ImageView>();
-//        for (int i=0; i<mUrls.size(); i++) {
-//            iv = new ImageView(mContext);
-//            iv.setLayoutParams(new ViewGroup.LayoutParams(
-//                    ViewGroup.LayoutParams.MATCH_PARENT,
-//                    ViewGroup.LayoutParams.MATCH_PARENT));
-//            mViews.add(iv);
-//        }
+        mViews = new ArrayList<ImageView>();
+
+        ImageView iv0 = new ImageView(mContext);
+        iv0.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.a));
+        iv0.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mViews.add(iv0);
+
+        ImageView iv1 = new ImageView(mContext);
+        iv1.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.b));
+        iv1.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mViews.add(iv1);
+
+        ImageView iv2 = new ImageView(mContext);
+        iv2.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.c));
+        iv2.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mViews.add(iv2);
+
+        ImageView iv3 = new ImageView(mContext);
+        iv3.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.d));
+        iv3.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mViews.add(iv3);
     }
 
     @Override
     public int getCount() {
-        return Integer.MAX_VALUE;
+        return 4;
     }
 
     @Override
@@ -40,19 +53,16 @@ public class HomeBannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container,final int position) {
-        ImageView iv = new ImageView(mContext);
-        iv.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
+    public Object instantiateItem(ViewGroup container, final int position) {
 
 
-        container.addView(iv);
-        return iv;
+        container.addView(mViews.get(position));
+
+        return mViews.get(position);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View)object);//删除页卡
+        container.removeView((View) object);//删除页卡
     }
 }
